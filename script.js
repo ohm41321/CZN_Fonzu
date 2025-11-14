@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             status: "Status",
             safe: "Safe",
             warning: "Warning",
-            note: "Note: ค่าเหล่านี้เป็นค่าประมาณและอาจแตกต่างกันไปขึ้นอยู่กับการอัปเดตเกม"
+            note: "Note: ค่าเหล่านี้เป็นค่าประมาณการและอาจแตกต่างกันไปขึ้นอยู่กับการอัปเดตเกม"
         },
         en: {
             main_header: "CZN Save Data Value Calculator",
