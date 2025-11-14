@@ -24,12 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
             ref_divine_epi: "- Divine Epiphany (ต่อการ์ด)",
             ref_conversion: "Card Conversion (การแปลงการ์ด)",
             ref_removal: "Card Removal (การลบการ์ด)",
-            removal_note: "การลบครั้งแรกฟรี (ถ้าไม่ใช่ Base Card)",
+            removal_note: "ลบการ์ดครั้งแรกฟรี (ถ้าไม่ใช่ Base Card)",
             ref_duplication: "Card Duplication (การซ้ำการ์ด)",
-            duplication_note: "การทำซ้ำครั้งแรกฟรี",
+            duplication_note: "ก็อปการ์ดใบเเรกแรกฟรี",
             ref_extra_penalty_header: "<strong>บทลงโทษเพิ่มเติม (Extra Penalty)</strong>",
             ref_extra_penalty_desc: "- เมื่อลบ Base Card",
-            footer_developed_by: "พัฒนาโดย ohm41321",
+            footer_developed_by: "Developed by ohm41321",
             footer_donate: "บริจาค",
             character_label: "ตัวละคร",
             chaos_tier_label: "Chaos Tier:",
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             status: "Status",
             safe: "Safe",
             warning: "Warning",
-            note: "Note: Values are estimates and may vary based on game updates."
+            note: "Note: ค่าเหล่านี้เป็นค่าประมาณและอาจแตกต่างกันไปขึ้นอยู่กับการอัปเดตเกม"
         },
         en: {
             main_header: "CZN Save Data Value Calculator",
@@ -360,9 +360,9 @@ document.addEventListener('DOMContentLoaded', () => {
             cardEl.innerHTML = `
                 <span>Card ${index + 1}</span>
                 <select class="card-type-select" data-card-id="${card.id}">
-                    <option value="none" ${card.type === 'none' ? 'selected' : ''} data-translate-key="card_type_none"></option>
-                    <option value="normal" ${card.type === 'normal' ? 'selected' : ''} data-translate-key="card_type_normal"></option>
-                    <option value="divine" ${card.type === 'divine' ? 'selected' : ''} data-translate-key="card_type_divine"></option>
+                    <option value="none" ${card.type === 'none' ? 'selected' : ''} data-translate-key="card_type_none">${translations[currentLang].card_type_none}</option>
+                    <option value="normal" ${card.type === 'normal' ? 'selected' : ''} data-translate-key="card_type_normal">${translations[currentLang].card_type_normal}</option>
+                    <option value="divine" ${card.type === 'divine' ? 'selected' : ''} data-translate-key="card_type_divine">${translations[currentLang].card_type_divine}</option>
                 </select>
                 <button class="btn-remove-card" data-card-id="${card.id}">×</button>
             `;
