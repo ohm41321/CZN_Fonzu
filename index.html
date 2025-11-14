@@ -35,6 +35,7 @@
                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                 </svg>
                 <span data-translate-key="add_zone_button">เพิ่มโซนคำนวณ</span>
+                <span id="zone-counter-display"></span>
             </button>
             <button id="clear-state-btn" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -65,57 +66,57 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Neutral Card</td>
-                        <td>20</td>
+                        <td data-label="Item">Neutral Card</td>
+                        <td data-label="Points">20</td>
                     </tr>
                     <tr>
-                        <td>Monster Card</td>
-                        <td>80</td>
+                        <td data-label="Item">Monster Card</td>
+                        <td data-label="Points">80</td>
                     </tr>
                     <tr>
-                        <td data-translate-key="ref_base_card">Base/Starting Card</td>
-                        <td>0</td>
+                        <td data-label="Item" data-translate-key="ref_base_card">Base/Starting Card</td>
+                        <td data-label="Points">0</td>
                     </tr>
                     <tr>
-                        <td>Forbidden Card (Event)</td>
-                        <td>20</td>
+                        <td data-label="Item">Forbidden Card</td>
+                        <td data-label="Points">20</td>
                     </tr>
                     <tr class="separator">
                         <td colspan="2"></td>
                     </tr>
                     <tr>
-                        <td data-translate-key="ref_normal_epi">+ Normal Epiphany (ต่อการ์ด)</td>
-                        <td>+10</td>
+                        <td data-label="Item" data-translate-key="ref_normal_epi">+ Normal Epiphany (ต่อการ์ด)</td>
+                        <td data-label="Points">+10</td>
                     </tr>
                     <tr>
-                        <td data-translate-key="ref_divine_epi">+ Divine Epiphany (ต่อการ์ด)</td>
-                        <td>+20</td>
+                        <td data-label="Item" data-translate-key="ref_divine_epi">+ Divine Epiphany (ต่อการ์ด)</td>
+                        <td data-label="Points">+20</td>
                     </tr>
                     <tr class="separator">
                         <td colspan="2"></td>
                     </tr>
                     <tr>
-                        <td data-translate-key="ref_conversion">Card Conversion (การแปลงการ์ด)</td>
-                        <td>10</td>
+                        <td data-label="Item" data-translate-key="ref_conversion">Card Conversion (การแปลงการ์ด)</td>
+                        <td data-label="Points">10</td>
                     </tr>
                     <tr>
-                        <td data-translate-key="ref_removal">Card Removal (การลบการ์ด)</td>
-                        <td>0 → 10 → 30 → 50 → 70…</td>
+                        <td data-label="Item" data-translate-key="ref_removal">Card Removal (การลบการ์ด)</td>
+                        <td data-label="Points">0 → 10 → 30 → 50 → 70…</td>
                     </tr>
                     <tr>
-                        <td data-translate-key="ref_duplication">Card Duplication (การซ้ำการ์ด)</td>
-                        <td>0 → 10 → 30 → 50 → 70…</td>
+                        <td data-label="Item" data-translate-key="ref_duplication">Card Duplication (การซ้ำการ์ด)</td>
+                        <td data-label="Points">0 → 10 → 30 → 50 → 70…</td>
                     </tr>
                     <tr class="separator">
                         <td colspan="2"></td>
                     </tr>
                     <tr>
-                        <td data-translate-key="ref_extra_penalty_header"><strong>บทลงโทษเพิ่มเติม (Extra Penalty)</strong></td>
-                        <td></td>
+                        <td data-label="Item" data-translate-key="ref_extra_penalty_header"><strong>บทลงโทษเพิ่มเติม (Extra Penalty)</strong></td>
+                        <td data-label="Points"></td>
                     </tr>
                     <tr>
-                        <td data-translate-key="ref_extra_penalty_desc">- เมื่อลบ Base Card</td>
-                        <td>+20</td>
+                        <td data-label="Item" data-translate-key="ref_extra_penalty_desc">- เมื่อลบ Base Card</td>
+                        <td data-label="Points">+20</td>
                     </tr>
                 </tbody>
             </table>

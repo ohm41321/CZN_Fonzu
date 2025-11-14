@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let zoneCounter = 0;
     let currentLang = 'th';
     let draggedCharName = null;
+    let selectedCharName = null; // For Click-to-Select UX
     const APP_STATE_KEY = 'cznCalculatorState';
+    const MAX_ZONES = 3;
 
     // --- TRANSLATIONS ---
     const translations = {
@@ -131,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupGlobalControls();
         renderAllZones();
         updateTranslations();
+        updateAddZoneButtonState(); // Initial button state
     }
 
     function setupLangSwitcher() {
@@ -179,6 +182,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function updateAddZoneButtonState() {
+        const btn = document.getElementById('add-zone-btn');
+        const counterDisplay = document.getElementById('zone-counter-display');
+        const currentZones = zones.length;
+        
+        if (btn && counterDisplay) {
+            counterDisplay.textContent = `(${currentZones}/${MAX_ZONES})`;
+            btn.disabled = currentZones >= MAX_ZONES;
+        }
+    }
+
     function populateCharacterPalette() {
         const characterPalette = document.getElementById('character-palette');
         if (!characterPalette) return;
@@ -203,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
             img.src = `character/${imgName}`;
             img.className = 'char-img';
             img.draggable = true;
+            img.addEventListener('click', handlePaletteCharClick); // Added this line
             const charTitle = imgName.replace('.png', '');
             img.title = charTitle;
             img.dataset.charName = charTitle;
@@ -303,10 +318,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addZone() {
+        if (zones.length >= MAX_ZONES) return;
         zoneCounter++;
         const zone = { id: `zone-${zoneCounter}`, character: null, neutralCards: [], monsterCards: [], inputs: {} };
         zones.push(zone);
         renderZone(zone);
+        updateAddZoneButtonState();
     }
 
     function setupZoneEvents(container, zone) {
@@ -314,11 +331,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const zoneIndex = zones.findIndex(z => z.id === zone.id);
             if (zoneIndex > -1) zones.splice(zoneIndex, 1);
             renderAllZones();
+            updateAddZoneButtonState();
         }));
         const dropzone = container.querySelector('.character-dropzone');
         dropzone.addEventListener('dragover', handleDragOver);
         dropzone.addEventListener('drop', (e) => handleDrop(e, zone));
         dropzone.addEventListener('dragleave', handleDragLeave);
+        dropzone.addEventListener('click', (e) => handleDropzoneClick(e, zone)); // Added this line
 
         container.querySelectorAll('.add-card-btn').forEach(btn => {
             btn.addEventListener('click', updateState(() => addCardToZone(zone, btn.dataset.cardType)));
@@ -338,6 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
         zones = [];
         zoneCounter = 0;
         renderAllZones();
+        updateAddZoneButtonState();
     }
 
     // --- CARD MANAGEMENT ---
@@ -384,6 +404,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- CLICK-TO-SELECT & DRAG & DROP ---
+
+    function handlePaletteCharClick(e) {
+        const clickedImg = e.target;
+        const charName = clickedImg.dataset.charName;
+
+        // Remove selection from all other characters
+        document.querySelectorAll('#character-palette .char-img').forEach(img => {
+            if (img !== clickedImg) {
+                img.classList.remove('selected-char');
+            }
+        });
+
+        // Toggle selection on the clicked character
+        if (clickedImg.classList.contains('selected-char')) {
+            selectedCharName = null;
+            clickedImg.classList.remove('selected-char');
+        } else {
+            selectedCharName = charName;
+            clickedImg.classList.add('selected-char');
+        }
+        updateTargetableZones();
+    }
+
+    function updateTargetableZones() {
+        document.querySelectorAll('.character-dropzone').forEach(dz => {
+            const zoneId = dz.dataset.zoneId;
+            const zone = zones.find(z => z.id === zoneId);
+            if (selectedCharName && zone && !zone.character) {
+                dz.classList.add('targetable');
+            } else {
+                dz.classList.remove('targetable');
+            }
+        });
+    }
+
+    function handleDropzoneClick(e, zone) {
+        if (selectedCharName && !zone.character) {
+            updateState(() => {
+                setZoneCharacter(zone, selectedCharName, true);
+                
+                // Deselect character in palette
+                const selectedImg = document.querySelector('#character-palette .char-img.selected-char');
+                if (selectedImg) selectedImg.classList.remove('selected-char');
+                selectedCharName = null;
+
+                updateTargetableZones();
+            })();
+        }
+    }
+
+
     // --- DRAG & DROP ---
     function handleDragOver(e) {
         e.preventDefault();
@@ -422,6 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <img src="character/${charName}.png" class="dropped-char-img ${animate ? 'animate-pop-in' : ''}" alt="${charName}">
             <div class="char-name">${charName}</div>`;
         dropzone.classList.add('has-char');
+        dropzone.classList.remove('targetable'); // Added this line
         dropzone.querySelector('.char-reset-btn').addEventListener('click', updateState(() => resetZoneCharacter(zone)));
     }
 
@@ -430,6 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const dropzone = document.querySelector(`.character-dropzone[data-zone-id="${zone.id}"]`);
         dropzone.innerHTML = '<p data-translate-key="character_label"></p>';
         dropzone.classList.remove('has-char');
+        updateTargetableZones(); // Added this line
         updateTranslations();
         updateZoneCalculations(zone);
     }

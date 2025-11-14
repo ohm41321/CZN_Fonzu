@@ -257,12 +257,12 @@ nav {
 
 .remove-zone-btn {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 1px;
+    right: 2px;
     background: none;
     border: none;
-    color: #888;
-    font-size: 1.5rem;
+    color: #ff0000;
+    font-size: 2rem;
     cursor: pointer;
     transition: color 0.2s;
 }
@@ -986,31 +986,251 @@ footer {
 
     
 
-        .char-item-container:hover .char-item-name {
+            .char-item-container:hover .char-item-name {
 
     
 
-    
+                display: none;
 
     
 
-            display: none;
+            }
 
     
 
+        
+
     
+
+            /* Responsive Global Controls */
+
+    
+
+            #global-controls {
+
+    
+
+                flex-direction: column;
+
+    
+
+                align-items: stretch;
+
+    
+
+            }
+
+    
+
+        
+
+    
+
+            #global-controls > * {
+
+    
+
+                width: 100%;
+
+    
+
+                justify-content: center;
+
+    
+
+            }
+
+    
+
+        
+
+    
+
+            /* Responsive Card Items */
+
+    
+
+            .card-item {
+
+    
+
+                flex-wrap: wrap;
+
+    
+
+                gap: 5px;
+
+    
+
+            }
+
+    
+
+        
+
+    
+
+            /* Responsive Reference Table */
+
+    
+
+            .reference-table {
+
+    
+
+                border: none;
+
+    
+
+                border-radius: 0;
+
+    
+
+            }
+
+    
+
+            .reference-table thead {
+
+    
+
+                display: none;
+
+    
+
+            }
+
+    
+
+            .reference-table tr {
+
+    
+
+                display: block;
+
+    
+
+                border: 1px solid var(--accent-secondary);
+
+    
+
+                border-radius: 8px;
+
+    
+
+                margin-bottom: 15px;
+
+    
+
+                background-color: var(--bg-container);
+
+    
+
+            }
+
+    
+
+            .reference-table tr.separator {
+
+    
+
+                display: none;
+
+    
+
+            }
+
+    
+
+            .reference-table td {
+
+    
+
+                display: flex;
+
+    
+
+                justify-content: space-between;
+
+    
+
+                align-items: center;
+
+    
+
+                padding: 10px 15px;
+
+    
+
+                text-align: right;
+
+    
+
+                border-bottom: 1px solid var(--accent-secondary);
+
+    
+
+            }
+
+    
+
+            .reference-table td:last-child {
+
+    
+
+                border-bottom: none;
+
+    
+
+            }
+
+    
+
+            .reference-table td::before {
+
+    
+
+                content: attr(data-label);
+
+    
+
+                font-weight: bold;
+
+    
+
+                text-align: left;
+
+    
+
+                margin-right: 10px;
+
+    
+
+                color: var(--text-primary);
+
+    
+
+            }
+
+    
+
+            .reference-table td:last-child {
+
+    
+
+                color: var(--accent-primary);
+
+    
+
+            }
+
+    
+
+        
 
     
 
         }
-
-    
-
-    
-
-    
-
-    }
 
     
 
@@ -1175,6 +1395,118 @@ footer {
     
 
     }
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    /* --- Click-to-Select UX --- */
+
+    
+
+    
+
+    
+
+    #character-palette .char-img.selected-char {
+
+    
+
+    
+
+    
+
+        border-color: var(--accent-primary);
+
+    
+
+    
+
+    
+
+        box-shadow: 0 0 12px var(--accent-primary);
+
+    
+
+    
+
+    
+
+        transform: scale(1.1);
+
+    
+
+    
+
+    
+
+    }
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    .character-dropzone.targetable {
+
+    
+
+    
+
+    
+
+        cursor: pointer;
+
+    
+
+    
+
+    
+
+        border-style: solid;
+
+    
+
+    
+
+    
+
+        border-color: var(--accent-primary);
+
+    
+
+    
+
+    
+
+    }
+
+    
+
+    
+
+    
+
+    
 
     
 
