@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ref_extra_penalty_header: "<strong>บทลงโทษเพิ่มเติม (Extra Penalty)</strong>",
             ref_extra_penalty_desc: "- เมื่อลบ Base Card",
             footer_developed_by: "Developed by ohm41321",
-            footer_donate: "บริจาค",
+            footer_donate: "Donate",
             character_label: "ตัวละคร",
             chaos_tier_label: "Chaos Tier:",
             neutral_cards: "Neutral Cards",
