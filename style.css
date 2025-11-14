@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@400;600&display=swap');
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 :root {
     --bg-main: #181818;
     --bg-container: #282828;
@@ -31,6 +35,14 @@ h1 {
     text-align: center;
     margin-bottom: 30px;
     color: var(--accent-primary);
+}
+
+.subtitle {
+    text-align: center;
+    margin-top: -25px;
+    margin-bottom: 30px;
+    color: var(--text-secondary);
+    font-size: 1rem;
 }
 
 h2 {
@@ -425,5 +437,141 @@ footer {
 }
 
 .footer-links span {
+
     color: var(--text-secondary);
+
+}
+
+
+
+/* --- Responsive Design for Mobile --- */
+
+@media (max-width: 768px) {
+
+    main#app {
+
+        padding: 10px;
+
+    }
+
+
+
+    .brand {
+
+        font-size: 1.5rem;
+
+    }
+
+
+
+    h1 {
+
+        font-size: 1.8rem;
+
+    }
+
+
+
+    /* Change zones to vertical layout */
+
+    #zones-container {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        overflow-x: hidden; /* Remove horizontal scroll */
+
+    }
+
+
+
+    .calculator-container {
+
+        width: 100%; /* Make calculator full width */
+
+        max-width: 480px; /* But not too wide on tablets */
+
+        padding: 20px;
+
+    }
+
+
+
+    /* Stack input groups vertically */
+
+    .input-group {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+
+    }
+
+
+
+    .input-group label {
+
+        flex-basis: auto;
+
+    }
+
+
+
+    .input-stepper {
+
+        flex-basis: auto;
+
+        justify-content: flex-start;
+
+    }
+
+
+
+    /* Adjust character palette */
+
+    #character-palette-container {
+
+        padding: 15px;
+
+    }
+
+
+
+    .char-img {
+
+        width: 60px;
+
+        height: 60px;
+
+    }
+
+
+
+    #character-palette {
+
+        gap: 15px;
+
+        max-height: 200px;
+
+    }
+
+
+
+    .char-item-name {
+
+        display: none; /* Hide names on mobile hover to prevent layout issues */
+
+    }
+
+    
+
+    .char-item-container:hover .char-item-name {
+
+        display: none;
+
+    }
+
 }
