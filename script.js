@@ -76,19 +76,31 @@ document.addEventListener('DOMContentLoaded', () => {
         characterImages.forEach(imgName => {
             const container = document.createElement('div');
             container.className = 'char-item-container';
+
+            // Add a 'New!' badge for Yuki
+            if (imgName === 'Yuki.png') {
+                const badge = document.createElement('span');
+                badge.className = 'new-badge';
+                badge.textContent = 'New!';
+                container.appendChild(badge);
+            }
+
             const img = document.createElement('img');
             img.src = `character/${imgName}`;
             img.className = 'char-img';
             img.draggable = true;
             const charTitle = imgName.replace('.png', '');
             img.title = charTitle;
+
             const name = document.createElement('span');
             name.className = 'char-item-name';
             name.textContent = charTitle;
+
             img.addEventListener('dragstart', (e) => {
                 e.dataTransfer.setData('text/plain', e.target.src);
                 e.dataTransfer.setData('text/title', e.target.title);
             });
+
             container.appendChild(img);
             container.appendChild(name);
             characterPalette.appendChild(container);
