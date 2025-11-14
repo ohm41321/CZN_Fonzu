@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ref_removal: "Card Removal (การลบการ์ด)",
             removal_note: "ลบการ์ดครั้งแรกฟรี (ถ้าไม่ใช่ Base Card)",
             ref_duplication: "Card Duplication (การซ้ำการ์ด)",
-            duplication_note: "ก็อปการ์ดใบเเรกแรกฟรี",
+            duplication_note: "ก็อปการ์ดใบแรกฟรี",
             ref_extra_penalty_header: "<strong>บทลงโทษเพิ่มเติม (Extra Penalty)</strong>",
             ref_extra_penalty_desc: "- เมื่อลบ Base Card",
             footer_developed_by: "Developed by ohm41321",
